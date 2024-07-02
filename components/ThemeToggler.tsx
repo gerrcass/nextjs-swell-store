@@ -21,14 +21,13 @@ const ThemeToggler = () => {
   if (!mounted) {
     // Use a base64 image placeholder to prevent flickering and layout shifts
     // This example addresses layout shift only.
-    return <div className="w-16 h-8 invisible"></div>;
+    return <div className="w-16 h-8 invisible scale-75 lg:scale-[none]"></div>;
   }
 
   return (
     <div
       onClick={toggleTheme}
-      className={`
-       relative w-16 h-8 flex items-center dark:bg-gray-900 bg-indigo-500 cursor-pointer rounded-full p-1`}
+      className="relative w-16 h-8 scale-75 lg:scale-[none] flex items-center dark:bg-gray-900 dark:border dark:border-white/30 bg-indigo-500 cursor-pointer rounded-full p-1"
     >
       <MoonIcon className="fill-white w-[15px] h-[15px]"></MoonIcon>
       <div
