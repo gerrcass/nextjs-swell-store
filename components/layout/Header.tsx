@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+
 import NavLink from "@/components/ui/NavLink";
 import MobileNavMenu from "@/components/layout/MobileNavMenu";
 import ThemeToggler from "@/components/ThemeToggler";
@@ -26,11 +28,24 @@ const Header = () => {
           <li className="text-sm font-medium uppercase tracking-wider">
             <NavLink href="/products">Products</NavLink>
           </li>
+          <SignedIn>
+            <li className="text-sm font-medium uppercase tracking-wider">
+              <NavLink href="/dashboard">Dashboard</NavLink>
+            </li>
+          </SignedIn>
         </ul>
 
         {/* Theme Button */}
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex items-center justify-between gap-1">
           <ThemeToggler />
+          <div className="flex items-center justify-center min-w-14 min-h-6">
+            <SignedOut>
+              <SignInButton />
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </div>
         </div>
       </nav>
     </header>

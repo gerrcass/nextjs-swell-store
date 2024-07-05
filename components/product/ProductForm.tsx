@@ -6,7 +6,7 @@ import RadioButtons from "@/components/product/RadioButtons";
 
 import { QuestionMarkCircleIcon } from "@heroicons/react/20/solid";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
-import { ExtendedProduct } from "@/lib/types";
+import { AddToCartInput, ExtendedProduct } from "@/lib/types";
 import useProduct from "@/lib/hook/useProduct";
 import { FormEvent } from "react";
 
@@ -34,7 +34,7 @@ const ProductForm = ({
     const productId = product.id;
     if (!productId) return;
 
-    const productData = {
+    const productData: AddToCartInput = {
       productId,
       quantity: 1,
       ...(selectedSize && {
