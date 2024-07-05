@@ -1,18 +1,11 @@
-import { CartItemOptions, CartItemPurchaseOption } from "swell-js";
-
-// export type AddToCartInput = {
-//   productId: string;
-//   quantity: number;
-//   options?: CartItemOptions[];
-//   purchaseOption?: CartItemPurchaseOption | undefined;
-// };
+import { CartItemOptions } from "swell-js";
 
 export type AddToCartInput = {
   productId: string;
   quantity: number;
   options?: CartItemOptions[];
   purchaseOption?: {
-    type: string;
-    planId: string;
+    type: "subscription" | "trial" | "standard" | undefined;
+    planId: any;
   };
 };
