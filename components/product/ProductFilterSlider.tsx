@@ -3,7 +3,12 @@
 import { Dispatch, Fragment, SetStateAction } from "react";
 import NavLink from "@/components/ui/NavLink";
 
-import { Dialog, Transition } from "@headlessui/react";
+import {
+  Transition,
+  TransitionChild,
+  Dialog,
+  DialogPanel,
+} from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
 const ProductFilterSlider = ({
@@ -16,9 +21,9 @@ const ProductFilterSlider = ({
   categories: swell.Category[];
 }) => {
   return (
-    <Transition.Root show={show} as={Fragment}>
+    <Transition show={show} as={Fragment}>
       <Dialog as="div" className="relative z-40 lg:hidden" onClose={onClose}>
-        <Transition.Child
+        <TransitionChild
           as={Fragment}
           enter="transition-opacity ease-linear duration-300"
           enterFrom="opacity-0"
@@ -28,10 +33,10 @@ const ProductFilterSlider = ({
           leaveTo="opacity-0"
         >
           <div className="fixed inset-0 bg-black bg-opacity-25" />
-        </Transition.Child>
+        </TransitionChild>
 
         <div className="fixed inset-0 z-40 flex">
-          <Transition.Child
+          <TransitionChild
             as={Fragment}
             enter="transition ease-in-out duration-300 transform"
             enterFrom="translate-x-full"
@@ -40,7 +45,7 @@ const ProductFilterSlider = ({
             leaveFrom="translate-x-0"
             leaveTo="translate-x-full"
           >
-            <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl">
+            <DialogPanel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl">
               <div className="flex items-center justify-between px-4">
                 <h2 className="text-lg font-medium text-stone-900">Filters</h2>
                 <button
@@ -87,11 +92,11 @@ const ProductFilterSlider = ({
                     ))}
                 </ul>
               </form>
-            </Dialog.Panel>
-          </Transition.Child>
+            </DialogPanel>
+          </TransitionChild>
         </div>
       </Dialog>
-    </Transition.Root>
+    </Transition>
   );
 };
 

@@ -17,7 +17,7 @@ const RadioButtons = ({
     <div className="mt-10">
       <label className="text-base font-medium">{label}</label>
       <fieldset className="mt-4">
-        <legend className="sr-only">Purchase Options</legend>
+        <legend className="sr-only">{label}</legend>
         <div className="space-y-4 sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
           {options.map((option) => (
             <div key={option.id} className="flex cursor-pointer items-center">

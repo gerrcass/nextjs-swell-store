@@ -6,7 +6,8 @@ import { sortOptions } from "@/lib/swell/product";
 
 import MenuItem from "@/components/ui/MenuItem";
 
-import { Menu, Transition } from "@headlessui/react";
+import { Menu, MenuButton, Transition } from "@headlessui/react";
+
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 const SortDropdownMenu = () => {
@@ -20,13 +21,13 @@ const SortDropdownMenu = () => {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <Menu.Button className="group inline-flex justify-center text-sm font-medium text-stone-500 hover:text-stone-900 dark:hover:text-stone-200">
+        <MenuButton className="group inline-flex justify-center text-sm font-medium text-stone-500 hover:text-stone-900 dark:hover:text-stone-200">
           Sort
           <ChevronDownIcon
             className="-mr-1 ml-1 h-5 w-5 flex-shrink-0"
             aria-hidden="true"
           />
-        </Menu.Button>
+        </MenuButton>
       </div>
 
       <Transition

@@ -1,16 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
 import clsx from "clsx";
-import { Tab } from "@headlessui/react";
+import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { Image } from "swell-js";
 
 const ProductImage = ({ images }: { images: Image[] | undefined }) => {
   return (
-    <Tab.Group
+    <TabGroup
       as="div"
       className="mt-6 flex flex-1 flex-col-reverse lg:mt-0 lg:self-start"
     >
       <div className="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
-        <Tab.List className="grid grid-cols-4 gap-6">
+        <TabList className="grid grid-cols-4 gap-6">
           {images?.map((image) => (
             <Tab
               key={image.id}
@@ -36,21 +36,21 @@ const ProductImage = ({ images }: { images: Image[] | undefined }) => {
               )}
             </Tab>
           ))}
-        </Tab.List>
+        </TabList>
       </div>
 
-      <Tab.Panels className="aspect-h-3 aspect-w-4 w-full">
+      <TabPanels className="aspect-h-3 aspect-w-4 w-full">
         {images?.map((image) => (
-          <Tab.Panel key={image.id}>
+          <TabPanel key={image.id}>
             <img
               src={image.file?.url}
               alt="product image"
               className="h-full w-full rounded-lg object-cover object-center"
             />
-          </Tab.Panel>
+          </TabPanel>
         ))}
-      </Tab.Panels>
-    </Tab.Group>
+      </TabPanels>
+    </TabGroup>
   );
 };
 

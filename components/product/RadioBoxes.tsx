@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { RadioGroup } from "@headlessui/react";
+import { RadioGroup, Radio, Label, Description } from "@headlessui/react";
 import { formatCurrency, getPlanFrequency } from "@/lib/utils";
 
 type RadioBoxesProps = {
@@ -20,25 +20,21 @@ const RadioBoxes = ({
   return (
     <div className="sm:flex sm:justify-between">
       <RadioGroup value={selected} onChange={setSelected}>
-        <RadioGroup.Label className="mt-10 block text-base font-medium">
-          {label}
-        </RadioGroup.Label>
+        <Label className="mt-10 block text-base font-medium">{label}</Label>
         <div className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2">
           {options.map((option) => (
-            <RadioGroup.Option
+            <Radio
               as="div"
               key={option.id}
               value={option}
-              className={({ active }) =>
-                clsx(
-                  active ? "ring-2 ring-sky-500" : "",
-                  "relative block cursor-pointer rounded-lg border border-stone-300 p-4 focus:outline-none dark:border-stone-600"
-                )
-              }
+              className={clsx(
+                "data-[checked]:ring-2 data-[checked]:ring-sky-500",
+                "relative block cursor-pointer rounded-lg border border-stone-300 p-4 focus:outline-none dark:border-stone-600"
+              )}
             >
-              {({ active, checked }) => (
+              {({ focus, checked }) => (
                 <>
-                  <RadioGroup.Label
+                  <Label
                     as="p"
                     className={clsx(
                       checked
@@ -50,8 +46,8 @@ const RadioBoxes = ({
                     {option.billingSchedule
                       ? `Every ${getPlanFrequency(option)}`
                       : option.name}
-                  </RadioGroup.Label>
-                  <RadioGroup.Description
+                  </Label>
+                  <Description
                     as="p"
                     className={clsx(
                       checked
@@ -65,10 +61,10 @@ const RadioBoxes = ({
                           amount: option.price + (selectedSize?.price || 0),
                         })} / ${getPlanFrequency(option)}`
                       : option.description}
-                  </RadioGroup.Description>
+                  </Description>
                   <div
                     className={clsx(
-                      active ? "border" : "border-2",
+                      focus ? "border" : "border-2",
                       checked ? "border-sky-500" : "border-transparent",
                       "pointer-events-none absolute -inset-px rounded-lg"
                     )}
@@ -76,7 +72,7 @@ const RadioBoxes = ({
                   />
                 </>
               )}
-            </RadioGroup.Option>
+            </Radio>
           ))}
         </div>
       </RadioGroup>
