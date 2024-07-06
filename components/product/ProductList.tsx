@@ -72,7 +72,7 @@ const Products = ({
                   {categories
                     ?.filter((c) => c.parentId === null)
                     .map((category) => (
-                      <li key={category.name}>
+                      <li key={category.id}>
                         <NavLink
                           href={`/products/category/${category.slug}`}
                           className="text-base"
