@@ -5,6 +5,7 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import NavLink from "@/components/ui/NavLink";
 import MobileNavMenu from "@/components/layout/MobileNavMenu";
 import ThemeToggler from "@/components/ThemeToggler";
+import ShoppingCartButton from "../ui/ShoppingCartButton";
 
 const Header = () => {
   return (
@@ -38,9 +39,12 @@ const Header = () => {
         {/* Theme Button */}
         <div className="flex items-center justify-between gap-1">
           <ThemeToggler />
+          <ShoppingCartButton />
           <div className="flex items-center justify-center min-w-14 min-h-6">
             <SignedOut>
-              <SignInButton />
+              <button className="rounded ml-2 border border-stone-400 px-3 py-0.5 transition-colors hover:bg-stone-700 hover:text-white">
+                Sign in
+              </button>
             </SignedOut>
             <SignedIn>
               <UserButton />
